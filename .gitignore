@@ -549,16 +549,10 @@ public_html/hot
 # Gradle files
 .gradle
 .gradle/
-/gradle/
-/gradlew
-/gradlew.bat
-gradle.properties
-gradlew
-gradlew.bat
 
 
-# Local configuration file (contains paths to the SDK installation)
-local.properties
+
+
 
 
 
