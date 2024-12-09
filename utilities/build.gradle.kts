@@ -61,16 +61,43 @@ android {
     }
 }
 
-publishing.publications {
-    create<MavenPublication>("release") {
-        description = "A shared library containing common data models for projects."
 
-        afterEvaluate {
-            from(components["release"])
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            pom {
+                name = "utilities"
+                description = "A concise description of my library"
+                url = "http://www.example.com/library"
+                properties = mapOf(
+                    "myProp" to "value",
+                    "prop.with.dots" to "anotherValue"
+                )
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "aqeldev"
+                        name = "aqel mohammed"
+                        email = "aqelmoh77@gmail.com"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://example.com/my-library.git"
+                    developerConnection = "scm:git:ssh://example.com/my-library.git"
+                    url = "http://example.com/my-library/"
+                }
+            }
+            afterEvaluate {
+                from(components["release"])
+            }
         }
     }
 }
-
 detekt {
     baseline = file("detekt-baseline.xml")
 }
